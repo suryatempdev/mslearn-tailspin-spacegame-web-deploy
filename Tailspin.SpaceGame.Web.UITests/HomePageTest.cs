@@ -20,6 +20,13 @@ namespace UITests
         public HomePageTest(string browser)
         {
             this.browser = browser;
+
+             ChromeOptions options = new ChromeOptions();
+            //options.EnableMobileEmulation(deviceName);
+            options.AddArgument("no-sandbox");
+
+ ChromeDriver drv = new ChromeDriver(ChromeDriverService.CreateDefaultService(), options, TimeSpan.FromMinutes(3));
+ drv.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(30)); 
         }
 
         [OneTimeSetUp]
